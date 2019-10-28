@@ -39,7 +39,6 @@ public class OrbitManager: MonoBehaviour{
 	private void Update() {
 		if(Manager.androidBuild) {
 			AndroidRotate();
-			//android scale
 		} else {
 			ScaleMap();
 		}

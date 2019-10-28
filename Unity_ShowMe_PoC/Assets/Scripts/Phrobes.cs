@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Phrobes : MonoBehaviour{
@@ -31,6 +32,10 @@ public class Phrobes : MonoBehaviour{
 	}
 
 	void PcUpdate() {
+		if(!Manager.InteractionCheck()) {
+			return;
+		}
+
 		if(Input.GetMouseButtonDown(0) && probesActive) {
 			StartCoroutine(MovePosition(phrobes[0], Input.mousePosition));
 		}
@@ -46,7 +51,6 @@ public class Phrobes : MonoBehaviour{
 		if(Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1)) {
 			EnablePhrobes(false);
 		}
-
 	}
 
 	void Discover() {

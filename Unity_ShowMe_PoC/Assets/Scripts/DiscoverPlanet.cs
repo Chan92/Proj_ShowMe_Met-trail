@@ -15,6 +15,10 @@ public class DiscoverPlanet : MonoBehaviour{
 		if(Manager.androidBuild) {
 			//android tap
 		} else {
+			if(!Manager.InteractionCheck()) {
+				return;
+			}
+
 			if(Input.GetMouseButtonDown(0) && layerId < 2) {
 				layerId++;
 				SetLayer();
