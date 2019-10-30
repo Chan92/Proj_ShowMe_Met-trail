@@ -13,15 +13,19 @@ public class ItemCheatFix : MonoBehaviour{
 
 	public Item[] myItemList;
 
+	public Image bigIcon;
+
 	private int counterPart1 = 0;
 	private int counterPart2 = 0;
 	private bool part1;
+	private int checkItemPlacing = 0;
 
 	void Start() {
 		myItemList[0].UpdateItem(t1Sprite[0]);
 		myItemList[1].UpdateItem(t1Sprite[1]);
 		myItemList[2].UpdateItem(t1Sprite[2]);
 		myItemList[3].UpdateItem(t1Sprite[3]);
+		CheckSelected();
 	}
 
 	public void UpdateSprite() {
@@ -54,34 +58,70 @@ public class ItemCheatFix : MonoBehaviour{
 			myItemList[1].UpdateItem(t1Sprite[2]);
 			myItemList[2].UpdateItem(t1Sprite[3]);
 			myItemList[3].UpdateItem(t0Sprite[0]);
+			checkItemPlacing = 1;
+			bigIcon.sprite = t0Sprite[0];
 		} else if(type == 2) {
 			myItemList[0].UpdateItem(t1Sprite[0]);
 			myItemList[1].UpdateItem(t1Sprite[1]);
 			myItemList[2].UpdateItem(t2Sprite[1]);
 			myItemList[3].UpdateItem(t0Sprite[0]);
+			checkItemPlacing = 2;
+			bigIcon.sprite = t0Sprite[0];
 		} else if(type == 3) {
 			myItemList[0].UpdateItem(t2Sprite[0]);
-			myItemList[1].UpdateItem(t2Sprite[0]);
+			myItemList[1].UpdateItem(t2Sprite[1]);
 			myItemList[2].UpdateItem(t0Sprite[0]);
 			myItemList[3].UpdateItem(t0Sprite[0]);
+			checkItemPlacing = 3;
+			bigIcon.sprite = t0Sprite[0];
 		} else if(type == 4) {
 			myItemList[0].UpdateItem(t3Sprite[0]);
 			myItemList[1].UpdateItem(t0Sprite[0]);
 			myItemList[2].UpdateItem(t0Sprite[0]);
 			myItemList[3].UpdateItem(t0Sprite[0]);
+			checkItemPlacing = 4;
+			bigIcon.sprite = t0Sprite[0];
 		}
+
+		CheckSelected();
 	}
 
 	public void CheckSelected() {
-		if(myItemList[0].selected && myItemList[1].selected && !myItemList[2].selected && !myItemList[3].selected) {
-			part1 = true;
-			mergeBt.interactable = true;
-		} else if(myItemList[2].selected && myItemList[3].selected && !myItemList[0].selected && !myItemList[1].selected) {
-			part1 = false;
-			mergeBt.interactable = true;
-		} else {
-			mergeBt.interactable = false;
-		}
+		if (checkItemPlacing == 0) {
+			if(myItemList[0].selected && myItemList[1].selected) {
+				part1 = true;
+				mergeBt.interactable = true;
+			} else if(myItemList[2].selected && myItemList[3].selected) {
+				part1 = false;
+				mergeBt.interactable = true;
+			} else {
+				mergeBt.interactable = false;
+			}
+		} else if(checkItemPlacing == 1) {
+			if(myItemList[1].selected && myItemList[2].selected) {
+				part1 = false;
+				mergeBt.interactable = true;
+			} else {
+				mergeBt.interactable = false;
+			}
+		} else if(checkItemPlacing == 2) {
+			if(myItemList[0].selected && myItemList[1].selected) {
+				part1 = true;
+				mergeBt.interactable = true;
+			} else {
+				mergeBt.interactable = false;
+			}
+		} else if(checkItemPlacing == 3) {
+			if(myItemList[0].selected && myItemList[1].selected) {
+				part1 = true;
+				mergeBt.interactable = true;
+			} else {
+				mergeBt.interactable = false;
+			}
+		} 	
 	}
 
+	public void SetBigIcon (Item img) {
+		bigIcon.sprite = img.icon;
+	}
 }

@@ -16,5 +16,10 @@ public class Item : MonoBehaviour{
 	public void UpdateItem(Sprite newIcon) {
 		icon = newIcon;
 		GetComponent<Image>().sprite = icon;
+		selected = false;
+	}
+
+	public void SelectedState() {
+		selected = !selected;
 	}
 }
