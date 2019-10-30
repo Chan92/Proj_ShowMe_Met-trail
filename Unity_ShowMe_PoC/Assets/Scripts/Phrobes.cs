@@ -47,10 +47,12 @@ public class Phrobes : MonoBehaviour{
 
 		if(Input.GetMouseButtonDown(0) && !probesActive) {
 			EnablePhrobes(true);
+			SpaceField.radarOut = true;
 		}
 
 		if(Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1)) {
 			EnablePhrobes(false);
+			SpaceField.radarOut = false;
 		}
 	}
 
