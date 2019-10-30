@@ -24,7 +24,15 @@ public class ItemsManager :MonoBehaviour {
 	private List<Item> savedItems = new List<Item>();
 	public List<Item> myItems = new List<Item>();
 	public Sprite[] sprites;
+	public Sprite[] t0Sprites;
+	public Sprite[] t1Sprites;
+	public Sprite[] t2Sprites;
+	public Sprite[] t3Sprites;
+	//public Sprite[][] itemSprite;
 	public Image bigIcon;
+
+	private int t1Id = 0;
+	private int t2Id = 0;
 
 	void Start() {
 		AllowMerge();
@@ -48,15 +56,19 @@ public class ItemsManager :MonoBehaviour {
 	void IconCheck() {
 		for (int i = 0; i < myItems.Count; i++) {
 			if (myItems[i].grade == ItemGrade.tier_0) {
-				myItems[i].UpdateItem(sprites[0]);
+				myItems[i].UpdateItem(t0Sprites[0]);
+
 			} else if (myItems[i].grade == ItemGrade.tier_1) {
-				myItems[i].UpdateItem(sprites[1]);
+				myItems[i].UpdateItem(t1Sprites[t1Id]);
+				t1Id++;
+
 			} else if(myItems[i].grade == ItemGrade.tier_2) {
-				//rng body/wheels
-				int sprite = Random.Range(2, 4);
-				myItems[i].UpdateItem(sprites[sprite]);
+				myItems[i].UpdateItem(t2Sprites[t2Id]);
+				t2Id++;
+
 			} else if(myItems[i].grade == ItemGrade.tier_3) {
-				myItems[i].UpdateItem(sprites[4]);
+				myItems[i].UpdateItem(t3Sprites[0]);
+
 			}
 		}
 	}

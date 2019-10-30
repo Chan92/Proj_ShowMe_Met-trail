@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour{
 	static public GraphicRaycaster gRay;
 	static public PointerEventData pointerData;
 	static public EventSystem eventSystem;
+	static public bool inGameplay;
 
 	private void Awake() {
 		canvas = myCanvas;

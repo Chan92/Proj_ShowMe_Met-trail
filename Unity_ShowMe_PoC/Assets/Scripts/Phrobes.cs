@@ -8,6 +8,7 @@ public class Phrobes : MonoBehaviour{
 	public Transform[] phrobes;
 	public RectTransform[] rectPhrobes;
 	public float moveSpeed = 25f;
+	public Transform spawner;
 	private bool probesActive;
 
 	void Start(){
@@ -54,7 +55,7 @@ public class Phrobes : MonoBehaviour{
 	}
 
 	void Discover() {
-		print("discover");
+		//print("discover");
 	}
 
 	void EnablePhrobes(bool active) {
