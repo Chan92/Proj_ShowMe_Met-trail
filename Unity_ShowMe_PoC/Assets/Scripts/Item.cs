@@ -12,4 +12,9 @@ public class Item : MonoBehaviour{
 	private void Start() {
 		icon = GetComponent<Image>().sprite;
 	}
+
+	public void UpdateItem(Sprite newIcon) {
+		icon = newIcon;
+		GetComponent<Image>().sprite = icon;
+	}
 }

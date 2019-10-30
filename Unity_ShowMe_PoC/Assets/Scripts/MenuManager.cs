@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour{
 	public GameObject inventaris;
 	public GameObject encyclopedie;
 	public GameObject homebase;
+	public GameObject planet;
 
 	void Start(){
 		DisableAll();
@@ -44,6 +45,10 @@ public class MenuManager : MonoBehaviour{
 
 	public void OpenHomebase(bool open) {
 		homebase.SetActive(open);
+	}
+
+	public void OpenPlanet(bool open) {
+		planet.SetActive(open);
 	}
 
 	public void DisableAll() {
